@@ -9,7 +9,12 @@ return {
       "MunifTanjim/nui.nvim",
     },
 			config = function()
-				vim.keymap.set('n', '<leader>n', ':Neotree filesystem reveal left<CR>')
+			local function openNeotreeAndEnableTransparent()
+            vim.cmd('Neotree filesystem reveal left')
+            vim.cmd('TransparentEnable')
+            vim.opt.laststatus = 0
+        end
+        vim.keymap.set('n', '<Leader>n', openNeotreeAndEnableTransparent)
 			end
 	}
 }
